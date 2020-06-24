@@ -18,6 +18,7 @@ const completeEditTask = (taskName, taskType, taskId) => {
             tasks[i].type = taskType;
         }
     }
+    saveTasks();
 
     alert("Task Updated!");
 
@@ -86,6 +87,7 @@ tasksToDoEl.appendChild(listItemEl);
 
 taskDataObj.id = taskIdCounter;
 tasks.push(taskDataObj);
+saveTasks();
 
 taskIdCounter++;
 };
@@ -138,6 +140,7 @@ const deleteTask = (taskId) => {
             updatedTaskArr.push(tasks[i]);
         }
     }
+    saveTasks();
 };
 
 const editTask = (taskId) => {
@@ -189,7 +192,7 @@ const taskStatusChangeHandler = () => {
             tasks[i].status = statusValue;
         }
     }
-
+    saveTasks();
 };
 
 const dragTaskHandler =(event) => {
@@ -230,6 +233,7 @@ const dropTaskHandler = (event) => {
             tasks[i].status = statusSelectEl.value.toLowerCase();
     }
     }
+    saveTasks();
 
 };
 
@@ -238,6 +242,10 @@ const dragLeaveTaskHandler = (event) => {
     if (taskListEl) {
         taskListEl.removeAttribute("style");
     }
+};
+
+const saveTasks = () => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
 pageContentEl.addEventListener("click", taskButtonHandler);
