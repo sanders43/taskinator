@@ -247,6 +247,11 @@ const dragLeaveTaskHandler = (event) => {
 const saveTasks = () => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 };
+const loadTasks = () => {
+    // get task items form local storage
+    //convert tasks from stringified back to array
+    // iterate through task array and creates task elements on page
+};
 
 pageContentEl.addEventListener("click", taskButtonHandler);
 pageContentEl.addEventListener("change", taskStatusChangeHandler);
